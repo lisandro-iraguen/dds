@@ -5,19 +5,34 @@ import java.util.List;
 
 public class Venta {
     public List<Prenda> prendasVendidas= new ArrayList<Prenda>();
-    Date today = new Date();
+    public Date fechaDeLaVenta = new Date();
+    public TipoDeVenta tipoDeVenta=TipoDeVenta.TARJETA;
+    public int cantidaDeCuotas=1;
+    public int COEFICIENTE_CUOTAS=1;
+
 
     public void venta(Prenda prenda){
-
         prendasVendidas.add(prenda);
     }
-    public float precioVenta(){
+    public double precioVenta(){
         float precioDeVentaDelDiaSeleccionado=0;
         for (Prenda prenda : prendasVendidas)
         {
-            precioDeVentaDelDiaSeleccionado+=prenda.precio();
+            precioDeVentaDelDiaSeleccionado+=(prenda.precio()+calcularDependiendoElTipoDeVenta(prenda));
+        }
+        return precioDeVentaDelDiaSeleccionado;
+    }
+
+    public float calcularDependiendoElTipoDeVenta(Prenda prenda){
+        float modificadorPrecio=0;
+        switch (tipoDeVenta){
+            case TARJETA:
+                modificadorPrecio= (float) (cantidaDeCuotas*COEFICIENTE_CUOTAS+ 0.01*prenda.precio());
+                break;
+            case EFECTIVO:
+                break;
         }
 
-        return precioDeVentaDelDiaSeleccionado;
+        return  modificadorPrecio;
     }
 }
