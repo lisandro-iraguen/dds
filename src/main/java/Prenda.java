@@ -1,5 +1,8 @@
+import Estado.IEstado;
+
 public class Prenda {
-    public Tipo tipo;
+    public ITipo tipo;
+    public IEstado estado;
 
 
     public float precio(){
