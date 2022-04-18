@@ -1,0 +1,9 @@
+VentaEfectivo.class
+Prenda.class
+Estado\IEstado.class
+Estado\Nuevo.class
+Facturacion.class
+Venta.class
+Estado\Promocion.class
+VentaTarjeta.class
+Estado\Liquidacin.class
